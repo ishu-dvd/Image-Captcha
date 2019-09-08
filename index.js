@@ -18,12 +18,7 @@ function randomise() {
     drawCircle(rr);
   }
 
-  if(flag){
-    flag = 0 ;
-  }
-  else{
-    flag = 1 ;
-  }
+  flag = !flag ;
 }
 
 function drawCircle(rr) {
