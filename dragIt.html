@@ -4,36 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="index.css">
-  <script type="text/javascript" src="index.js">
-  </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
+#myPage{
+  background: url(greyBG.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 #div1 {
   width: 350px;
   height: 70px;
   padding: 10px;
   border: 1px solid #aaaaaa;
 }
+#band{
+  margin-left: 35%;
+}
 </style>
 <script>
+var flag = 0 ;
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function drag(ev) {
+function dragrec(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+   flag=1;
+}
+
+
+
+function dragtri(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+  flag=2;
+}
+
+function dragcir(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+  flag=3;
 }
 
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
+
+   if (flag==1)
+    {
+       window.location.replace("correctCaptcha.html") ;
+     }
+  else
+    {
+       window.location.replace("incorrectCaptcha.html") ;
+     }
 }
+
 </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -63,11 +94,11 @@ function drop(ev) {
 
     <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <br>
-    <img id="drag1" src="rectangle.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+    <img id="drag1" src="rectangle.png" draggable="true" ondragstart="dragrec(event)" width="336" height="69">
     <br>
-    <img id="drag1" src="triangle.jpg" draggable="true" >
+    <img id="drag2" src="triangle.png" draggable="true" ondragstart="dragtri(event)" width="336" height="99">
     <br>
-    <img id="drag1" src="circle.jpg" draggable="true"  >
+    <img id="drag3" src="circle.png" draggable="true" ondragstart="dragcir(event)" width="336" height="99">
   </div>
 
 

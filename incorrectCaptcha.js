@@ -7,3 +7,13 @@ function startCaptcha(){
   var firstCaptcha = captchaList[choice] ;
   window.location.replace(firstCaptcha) ;
 }
+
+var count = 6 ;
+
+function counter(){
+  count = count - 1 ;
+  document.getElementById('msg').innerHTML = "Starting back in " + count + " seconds ....." ;
+}
+
+setInterval(counter , 1000);
+setTimeout(startCaptcha,5000);
