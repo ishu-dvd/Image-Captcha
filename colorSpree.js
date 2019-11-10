@@ -4,8 +4,8 @@ var color ;
 var correctClick = 0 ;
 var totalClick = 0 ;
 
-var threshold = 0.6 ;
-var clickThreshold = 10 ;
+var threshold = 0.1 ;
+var clickThreshold = 6 ;
 
 function randomise() {
   canvas = document.getElementById('canvas');
@@ -19,6 +19,25 @@ function randomise() {
   }
 
   flag = !flag ;
+}
+
+function greenClick(){
+  if(color === 'green'){
+    correctClick = correctClick + 1 ;
+  }
+  totalClick = totalClick + 1 ;
+
+  console.log("click");
+
+  var accuracy = correctClick / totalClick ;
+  if(accuracy >= threshold && totalClick >= clickThreshold){
+    alert("Captcha Correct -> total clicks = " + totalClick + " correct clicks = " + correctClick ) ;
+    window.location.replace("correctCaptcha.html") ;
+  }
+  else if (totalClick > 13) {
+    alert("Incorrect clicks , try again !!!!") ;
+    window.location.replace("incorrectCaptcha.html") ;
+  }
 }
 
 function drawCircle(rr) {
@@ -58,6 +77,11 @@ document.onkeydown = function(evt) {
         var accuracy = correctClick / totalClick ;
         if(accuracy >= threshold && totalClick >= clickThreshold){
           alert("Captcha Correct -> total clicks = " + totalClick + " correct clicks = " + correctClick ) ;
+          window.location.replace("correctCaptcha.html") ;
+        }
+        else if (totalClick > 13) {
+          alert("Incorrect clicks , try again !!!!") ;
+          window.location.replace("incorrectCaptcha.html") ;
         }
     }
 };

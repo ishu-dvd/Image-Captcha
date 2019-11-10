@@ -1,3 +1,19 @@
 #canvas{
   background-color: black;
 }
+
+.canvas-area{
+  margin-left: 35%;
+}
+
+#myPage{
+  background: url(greyBG.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#button-div{
+  margin-left: 43%;
+}
